@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Color Detection</title>
-    <link rel="stylesheet" href="css/styles.css"> <!-- Use relative path -->
-    <script src="js/script.js" defer></script> <!-- Use relative path -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}"> <!-- Updated path -->
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script> <!-- Updated path -->
     <style>
         /* Basic styles for the loading overlay and spinner */
         #loadingOverlay {
@@ -45,7 +45,7 @@
 
         <div class="options">
             <!-- Image Upload Form -->
-            <form id="uploadForm" action="upload_image" method="POST" enctype="multipart/form-data">
+            <form id="uploadForm" action="{{ url_for('upload_image') }}" method="POST" enctype="multipart/form-data">
                 <input type="file" name="image" accept="image/*" required>
                 <button type="submit">Upload Image</button>
             </form>
