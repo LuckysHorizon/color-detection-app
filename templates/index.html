@@ -4,42 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Color Detection</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}"> <!-- Updated path -->
-    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script> <!-- Updated path -->
-    <style>
-        /* Basic styles for the loading overlay and spinner */
-        #loadingOverlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10; /* Ensure it sits above other elements */
-        }
-
-        .spinner {
-            border: 8px solid #f3f3f3; /* Light grey */
-            border-top: 8px solid #4CAF50; /* Green */
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite; /* Animation for the spinner */
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Color Detection App</h1>
+            <h1>Color Detection using python Open CV</h1>
             <p>Double-click to detect colors from the webcam or uploaded images.</p>
         </header>
 
@@ -52,7 +23,7 @@
             <!-- Button to activate webcam -->
             <button id="webcamButton">Use Webcam</button>
             <!-- New button to switch back to the uploaded image -->
-            <button id="switchToImageButton" style="display:none;">Switch to Uploaded Image</button> <!-- Initially hidden -->
+            <button id="switchToImageButton" style="display:none;">Switch to Uploaded Image</button>
         </div>
 
         <div class="output" style="position: relative;">
@@ -60,7 +31,39 @@
             <div id="loadingOverlay" style="display: none;">
                 <div class="spinner"></div>
             </div>
-            <div id="colorResult"></div>
+
+            <!-- Display area for the color result -->
+            <div id="colorResult">
+                <!-- Color preview box with color name -->
+                <div class="color-preview-box">
+                    <div class="color-box" id="colorPreview"></div>
+                    <span class="color-label" id="color_name">Detected Color</span> <!-- Added color name span -->
+                </div>
+
+                <!-- Separate boxes for each color value -->
+                <div class="color-values">
+                    <div class="color-value-box">
+                        <span class="label">RGB</span>
+                        <span id="rgbValue">0, 0, 0</span>
+                    </div>
+                    <div class="color-value-box">
+                        <span class="label">HEX</span>
+                        <span id="hexValue">#000000</span>
+                    </div>
+                    <div class="color-value-box">
+                        <span class="label">HSL</span>
+                        <span id="hslValue">0°, 0%, 0%</span>
+                    </div>
+                    <div class="color-value-box">
+                        <span class="label">HSV</span>
+                        <span id="hsvValue">0°, 0%, 0%</span>
+                    </div>
+                    <div class="color-value-box">
+                        <span class="label">CMYK</span>
+                        <span id="cmykValue">0%, 0%, 0%, 100%</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>

@@ -1,0 +1,96 @@
+/* General Reset and Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Ensures no scrollbars show up */
+}
+
+body {
+    background: url('/static/images/background-image.jpg') no-repeat center center;
+    background-size: cover; /* Ensures the image scales proportionally to cover the entire screen */
+}
+
+/* Landing Page Container */
+.landing-page {
+    text-align: center;
+    color: white;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Header Styling */
+.header {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 60px;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6);
+    letter-spacing: 3px;
+    line-height: 1.2;
+}
+
+/* Button Styling */
+.get-started-button {
+    text-decoration: none;
+    background-color: #ff2f00;
+    color: white;
+    padding: 20px 50px;
+    font-size: 2rem;
+    font-weight: bold;
+    border-radius: 12px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.get-started-button:hover {
+    background-color: #ff7733;
+    transform: scale(1.1);
+}
+
+/* Desktop-Specific Styling */
+@media (min-width: 1024px) {
+    .header {
+        font-size: 6rem;
+        margin-bottom: 80px;
+    }
+
+    .get-started-button {
+        padding: 25px 60px;
+        font-size: 2.2rem;
+    }
+}
+
+/* Tablet-Specific Styling */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .header {
+        font-size: 4rem;
+        margin-bottom: 60px;
+    }
+
+    .get-started-button {
+        padding: 20px 50px;
+        font-size: 1.8rem;
+    }
+}
+
+/* Mobile-Specific Styling */
+@media (max-width: 767px) {
+    .header {
+        font-size: 2.5rem;
+        margin-bottom: 40px;
+    }
+
+    .get-started-button {
+        padding: 15px 40px;
+        font-size: 1.5rem;
+    }
+}

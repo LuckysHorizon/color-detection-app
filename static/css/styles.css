@@ -1,15 +1,15 @@
 body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, rgba(255, 0, 0, 0.5), rgba(0, 255, 0, 0.5), rgba(0, 0, 255, 0.5)); /* Mixture of RED, GREEN, BLUE */
+    background: linear-gradient(135deg, rgba(255, 0, 0, 0.5), rgba(0, 255, 0, 0.5), rgba(0, 0, 255, 0.5));
     margin: 0;
     padding: 0;
-    filter: brightness(0.9);  /* Matte finish effect */
+    filter: brightness(0.9);
 }
 
 .container {
     max-width: 900px;
     margin: 50px auto;
-    background: rgba(255, 255, 255, 0.8);  /* Semi-transparent background */
+    background: rgba(255, 255, 255, 0.8);
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
@@ -18,12 +18,12 @@ body {
 }
 
 .container:hover {
-    transform: scale(1.02);  /* Slight scale effect on hover */
+    transform: scale(1.02);
 }
 
 header h1 {
     font-size: 3rem;
-    color: #4CAF50;
+    color: #010101;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 10px;
     animation: fadeIn 2s ease-in-out;
@@ -44,7 +44,7 @@ header p {
     animation: slideIn 2s ease-in-out;
 }
 
-input[type="file"] {
+input[type="file"], button {
     padding: 12px 15px;
     background: #4CAF50;
     color: white;
@@ -55,24 +55,13 @@ input[type="file"] {
     transition: background 0.3s ease;
 }
 
-button {
-    padding: 12px 20px;
-    background: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 8px;
-    font-size: 1rem;
-    transition: background 0.3s ease, transform 0.3s ease;
-}
-
 button:hover {
     background: #45a049;
-    transform: translateY(-3px);  /* Slight raise on hover */
+    transform: translateY(-3px);
 }
 
 button:active {
-    transform: translateY(0);  /* Reset on click */
+    transform: translateY(0);
 }
 
 canvas {
@@ -81,33 +70,81 @@ canvas {
     margin-top: 30px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     transition: border 0.3s ease;
-    position: relative; /* Added for absolute positioning of the loading overlay */
+    position: relative;
 }
 
 canvas:hover {
-    border: 3px solid #4CAF50;  /* Highlight canvas on hover */
+    border: 3px solid #4CAF50;
 }
 
 #colorResult {
-    margin-top: 20px;
-    font-size: 1.4rem;
-    animation: popUp 1s ease-out;
     display: flex;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
+    gap: 15px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 900px;
+    margin: 20px auto;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* New color box styling */
+/* Color Preview Box */
+.color-preview-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
 .color-box {
-    width: 50px;
-    height: 50px;
-    border-radius: 5px;
+    width: 70px;
+    height: 70px;
+    border-radius: 8px;
     border: 1px solid #333;
-    margin-right: 15px;
+    margin-bottom: 5px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Loading Overlay Styles */
+.color-label {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+/* Color Value Boxes */
+.color-values {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.color-value-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    width: 200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.color-value-box:hover {
+    transform: scale(1.05);
+}
+
+.label {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* Loading Overlay */
 #loadingOverlay {
     position: absolute;
     top: 0;
@@ -117,8 +154,8 @@ canvas:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent background */
-    z-index: 1000; /* Ensure it's above other elements */
+    background-color: rgba(255, 255, 255, 0.7);
+    z-index: 1000;
 }
 
 .spinner {
@@ -153,4 +190,12 @@ canvas:hover {
 @keyframes popUp {
     from { transform: scale(0.5); opacity: 0; }
     to { transform: scale(1); opacity: 1; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #imageCanvas {
+        width: 100%;
+        height: auto;
+    }
 }
