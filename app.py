@@ -15,6 +15,12 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
 app.secret_key = 'supersecretkey'
 
+import os
+
+# Ensure upload folder exists
+if not os.path.exists(app.config['UPLOAD_FOLDER']):
+    os.makedirs(app.config['UPLOAD_FOLDER'])
+
 # AWS Credentials
 AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
@@ -130,9 +136,14 @@ def upload_image():
 
     if file:
         try:
-            # Convert file to file-like object
+            # Save file locally
+            local_path = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
+            file.save(local_path)
+
+            # Convert file to file-like object for S3 upload
             file_stream = io.BytesIO()
-            file.save(file_stream)
+            with open(local_path, 'rb') as f:
+                file_stream.write(f.read())
             file_stream.seek(0)  # Reset file stream position
 
             # Upload to S3
