@@ -1,7 +1,8 @@
 # Color Detection Web App
 
 ## Overview
-A web application built using Python that allows users to upload images and detect the predominant colors in them. application is live at https://color-detection-app-jceb.onrender.com/
+A web application built using Python that allows users to upload images and detect the predominant colors in them. 
+application is live at https://color-detection-app-jceb.onrender.com/
 
 ## Features
 - Image upload for color detection.
