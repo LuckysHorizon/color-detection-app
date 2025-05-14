@@ -2,6 +2,7 @@
 
 ## Overview
 A web application built using Python that allows users to upload images and detect the predominant colors in them. 
+## Live URL
 application is live at https://color-detection-app-jceb.onrender.com/
 
 ## Features
